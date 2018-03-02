@@ -132,6 +132,11 @@ export class CombatantViewModel {
         return this.Combatant.Hidden() ? "fa-eye-slash" : "fa-eye";
     });
 
+    public HideACClass = ko.pureComputed(() => {
+        if (this.Combatant.IsPlayerCharacter) { return ""; }
+        return this.Combatant.HideAC() ? "fa-eye-slash" : "fa-eye";
+    });
+
     public IsSelected = ko.pureComputed(() => {
         return this.CombatantCommander.SelectedCombatants().some(c => c === this);
     });
@@ -148,6 +153,17 @@ export class CombatantViewModel {
         } else {
             this.Combatant.Hidden(true);
             this.LogEvent(`${this.Name()} hidden in player view.`);
+        }
+        this.Combatant.Encounter.QueueEmitEncounter();
+    }
+
+    public ToggleHideAC(data, event) {
+        if (this.Combatant.IsPlayerCharacter || this.Combatant.HideAC()) {
+            this.Combatant.HideAC(false);
+            this.LogEvent(`${this.Name()} AC revealed in player view.`);
+        } else {
+            this.Combatant.HideAC(true);
+            this.LogEvent(`${this.Name()} AC hidden in player view.`);
         }
         this.Combatant.Encounter.QueueEmitEncounter();
     }

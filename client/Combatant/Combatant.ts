@@ -23,6 +23,7 @@ export interface Combatant {
     Initiative: KnockoutObservable<number>;
     InitiativeGroup: KnockoutObservable<string>;
     Hidden: KnockoutObservable<boolean>;
+    HideAC: KnockoutObservable<boolean>;
     StatBlock: KnockoutObservable<StatBlock>;
     GetInitiativeRoll: () => number;
     IsPlayerCharacter: boolean;
@@ -77,6 +78,7 @@ export class Combatant implements Combatant {
     public InitiativeGroup = ko.observable<string>(null);
     public StatBlock = ko.observable<StatBlock>();
     public Hidden = ko.observable(false);
+    public HideAC = ko.observable(true);
 
     public IndexLabel: number;
     public MaxHP: number;
@@ -112,6 +114,7 @@ export class Combatant implements Combatant {
         this.Alias(savedCombatant.Alias);
         this.Tags(Tag.getLegacyTags(savedCombatant.Tags, this));
         this.Hidden(savedCombatant.Hidden);
+        this.HideAC(savedCombatant.HideAC);
     }
 
     private getMaxHP(statBlock: StatBlock) {

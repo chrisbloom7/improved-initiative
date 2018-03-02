@@ -4,6 +4,8 @@ import { Tag } from "./Tag";
 
 export interface StaticCombatantViewModel {
     Name: string;
+    AC: number;
+    ACDisplay: boolean;
     HPDisplay: string;
     HPColor: string;
     Initiative: number;
@@ -15,13 +17,19 @@ export interface StaticCombatantViewModel {
 export function ToStaticViewModel(combatant: Combatant): StaticCombatantViewModel {
     return {
         Name: combatant.DisplayName(),
+        AC: combatant.AC,
         Id: combatant.Id,
+        ACDisplay: GetACDisplay(combatant),
         HPDisplay: GetHPDisplay(combatant),
         HPColor: GetHPColor(combatant),
         Initiative: combatant.Initiative(),
         IsPlayerCharacter: combatant.IsPlayerCharacter,
         Tags: combatant.Tags(),
     };
+}
+
+function GetACDisplay(combatant: Combatant): boolean {
+    return combatant.IsPlayerCharacter || !combatant.HideAC()
 }
 
 function GetHPDisplay(combatant: Combatant): string {

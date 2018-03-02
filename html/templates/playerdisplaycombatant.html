@@ -5,6 +5,9 @@
 <div class="hp" data-bind="css: { 'disable-hover': !$root.allowSuggestions() }">
     <span data-bind="click: $root.ShowSuggestion, html: HPDisplay, style: { color: HPColor }" class="current-hp"></span>
 </div>
+<div class="ac">
+    <span data-bind="text: AC, visible: ACDisplay" title="Armor Class"></span>
+</div>
 <div class="tags" data-bind="foreach: Tags">
     <div class="tag">
         <span data-bind="text: Text"></span>

@@ -264,6 +264,7 @@ export class Encounter {
                     MaxHP: c.MaxHP,
                     CurrentHP: c.CurrentHP(),
                     TemporaryHP: c.TemporaryHP(),
+                    HideAC: c.HideAC(),
                     Initiative: c.Initiative(),
                     InitiativeGroup: c.InitiativeGroup(),
                     Alias: c.Alias(),

@@ -8,6 +8,7 @@ export interface SavedCombatant {
     MaxHP: number;
     CurrentHP: number;
     TemporaryHP: number;
+    HideAC: boolean;
     Initiative: number;
     InitiativeGroup?: string;
     Alias: string;

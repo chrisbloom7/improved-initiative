@@ -1,7 +1,10 @@
 <span data-bind="text: Combatant.Initiative, css: InitiativeClass" title="Initiative Roll" class="initiative"></span>
 <span class="name" data-bind="text: Name, attr: {title: Name }"></span>
 <span class="hp" data-bind="click: EditHP, text: HP, style: { color: GetHPColor() }"></span>
-<span class="ac" title="Armor Class" data-bind="text: Combatant.AC"></span>
+<span class="ac">
+    <span title="Armor Class" data-bind="text: Combatant.AC"></span>
+    <span class="fa-clickable" title="Hide/Reveal Armor Class in Player Window" data-bind="click: ToggleHideAC, css: HideACClass"></span>
+</span>
 <span class="tags">
 <!--ko foreach: Combatant.Tags() -->
     <span class="tag">
